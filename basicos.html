@@ -9,21 +9,43 @@
 <body>
     <h1>Fundamentos JavaScript</h1>
     <script>
-        var hola = 'Hola mundo';
-        let hello = 'Hello world'
-        console.log(hola);
-        console.log(hello);
-        console.log(window);
-        console.log(window.hola);
-        console.log(window.hello);
-        // Ambito de bloque 
-        var musica = 'rock';
-        console.log('Variable musica antes del bloque ', musica);
-        {
-            let  musica = 'pop';
-            console.log('Variable musica dentro del bloque', musica );
+        // var hola = 'Hola mundo';
+        // let hello = 'Hello world'
+        // console.log(hola);
+        // console.log(hello);
+        // console.log(window);
+        // console.log(window.hola);
+        // console.log(window.hello);
+        // // Ambito de bloque 
+        // var musica = 'rock';
+        // console.log('Variable musica antes del bloque ', musica);
+        // {
+        //     let  musica = 'pop';
+        //     console.log('Variable musica dentro del bloque', musica );
+        // }
+        // console.log('Variable musica despues del bloque', musica );
+    // CONSTANTES 
+    /*
+    - No puedes declarar una constante vacia
+    - No debe cambiar el valor durante el flujo del programa (simpre que sean valores primitivos). Con valores compuestos (arrays, objects), es diferente
+    */
+        const PI =3.1416
+        console.log(PI);
+
+        const objeto = {
+            nombre: "jon",
+            edad: 35
         }
-        console.log('Variable musica despues del bloque', musica );
+        const colores = ['amarillo','azul', 'rojo']
+
+        console.log(objeto);
+        console.log(colores);
+
+        objeto.correo = 'jonmircha@msn.com'
+        colores.push ('aranjado')
+
+        console.log(objeto);
+        console.log(colores);
     </script>
 </body>
 </html>
