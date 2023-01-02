@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fundamentos JavaScript</h1>
+    <script>
+        var hola = 'Hola mundo';
+        let hello = 'Hello world'
+        console.log(hola);
+        console.log(hello);
+        console.log(window);
+        console.log(window.hola);
+        console.log(window.hello);
+        // Ambito de bloque 
+        var musica = 'rock';
+        console.log('Variable musica antes del bloque ', musica);
+        {
+            let  musica = 'pop';
+            console.log('Variable musica dentro del bloque', musica );
+        }
+        console.log('Variable musica despues del bloque', musica );
+    </script>
+</body>
+</html>
