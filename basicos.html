@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1>Fundamentos JavaScript</h1>
+    <P>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque ut tempora explicabo ab aliquam ipsam possimus veniam quae in. Error quidem minus quos neque deleniti obcaecati eius consequatur possimus culpa.</P>
+    <ul>
+        <li> Primavera</li>
+        <li> Verano </li>
+        <li> Otoño </li>
+        <li> Invierno </li>
+    </ul>
     <script>
         // var hola = 'Hola mundo';
         // let hello = 'Hello world'
@@ -27,8 +34,9 @@
     // CONSTANTES 
     /*
     - No puedes declarar una constante vacia
-    - No debe cambiar el valor durante el flujo del programa (simpre que sean valores primitivos). Con valores compuestos (arrays, objects), es diferente
+    - No debe cambiar el valor durante el flujo del programa (simpre que sean valores primitivos, ya que se accede directamente al valor). Con valores compuestos (arrays, objects), se accede a una referencia del valor, se puede usar ya que la referencia no combio, sigue siendo un objeto o un arreglo. 
     */
+   /*
         const PI =3.1416
         console.log(PI);
 
@@ -46,6 +54,105 @@
 
         console.log(objeto);
         console.log(colores);
+    */
+    /* 
+        //Cadenas de texto aka Strings
+        let nombre='Jon' 
+        let apellido = "Mircha"
+        let saludo = new String("Hola mundo")
+        let lorem = '        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque ut tempora explicabo ab aliquam ipsam possimus veniam quae in. Error quidem minus quos neque deleniti obcaecati eius consequatur possimus culpa           '
+
+        console.log(nombre,apellido,saludo);
+        console.log(
+        nombre.length,
+        apellido.length,
+        saludo.length,
+        nombre.toLowerCase(),
+        apellido.toUpperCase(),
+        lorem.includes('amet'),
+        lorem.includes('jon'),
+        lorem, 
+        lorem.trim(),
+        lorem.split(" "),
+        lorem.split(",")
+        );
+    */
+/*
+    // Concatenacion
+    let nombre = 'jon';
+    let apellido = 'Mircha';
+
+    let saludo = 'Hola mi nombre es ' + nombre + ' ' + apellido + '.'
+    console.log(saludo);
+
+    // Interpolacion de variables 
+    // Templetes Strings´
+    let saludo2 = `Hola mi nombre es ${nombre} ${apellido} .`
+    console.log(saludo2);
+
+    let ul = ` 
+    <ul>
+        <li> Primavera</li>
+        <li> Verano </li>
+        <li> Otoño </li>
+        <li> Invierno </li>
+    </ul>`
+    console.log(ul);
+    
+    // Numbers
+    let a = 2;
+    let b = new Number (1);
+    let c = 7.19;
+    let d = '5.6'
+    console.log(a,b);
+    console.log(c.toFixed(1));
+    console.log(c.toFixed(5));
+    console.log(parseInt(c));
+    console.log(parseFloat(c));
+    console.log(typeof c, typeof d);
+    console.log(a + b);
+    console.log(c + d); // transforma el number en string y no lo suma
+    console.log(c + parseInt(d)); // 12.19
+    console.log(c + parseFloat(d));
+    // TODOS ESTOS METODOS CUELGAN DEL OBJETO Number; son metodos directos del CONSTRUCTOR Number:
+    console.log(c + Number.parseFloat(d));
+    console.log(c + Number.parseInt(d));
+*/
+/*
+    // Booleans
+    let verdadero = true;
+    let falso = false; 
+    let v = Boolean(true)
+    let f = Boolean (false)
+    console.log(verdadero, falso, v, f );
+    console.log(typeof verdadero, typeof falso)
+    // falsy and truthy
+    console.log(Boolean(0));
+    console.log(Boolean(1));
+    console.log(Boolean(""));
+    console.log(Boolean(" "));
+    console.log(Boolean({}));
+    console.log(Boolean([]));
+    console.log(Boolean(NaN));
+    console.log(Boolean(null));
+
+*/
+    // Undefined, null, Nan
+    //Undefined: Variable que no fue inicializada.
+    let indefinida; 
+    let nulo = null; //Asignado intencionalmente por el programador
+    console.log(indefinida); //undefined, lo tira js, no se le asifno valor
+    console.log(nulo); // es asignado por el programador, es un valor asignado.
+
+    //NaN - Not a Number
+    let noEsUnNumero = 'Hola' * 3.5;
+    console.log(noEsUnNumero); //NaN 
+
+
+    
+
+
+
     </script>
 </body>
 </html>
