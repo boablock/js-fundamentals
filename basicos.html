@@ -227,7 +227,7 @@
     // Objects
     // variables de los objetos --> atributos
     // funciones de los objetos --> metodos
-
+/*
     let a = new String('Hola')
     // console.log(a);
 
@@ -269,8 +269,210 @@
 
     console.log(Object.keys(jon));
     console.log(Object.values(jon));
-    console.log(jon.hasOwnProperty('name')); // true 
+    console.log(jon.hasOwnProperty('name')); // true  
     console.log(jon.hasOwnProperty('nombre')); // false
+*/
+/*
+    // 16) BUGS HANDLE STRUCTURE - FINALLY
+        try{
+            console.log('On try we add code to evaluate it ');
+            noExist;
+            console.log('Second try mensage');
+        }catch(error){
+            console.log('Catch capture try codes bugs');
+            console.log(error);
+        }finally{
+            console.log('Finally will be executed at the end of the try-catch block');
+        }
+
+        try{
+            let numero ='y';
+            if(isNaN(numero)){
+                throw new Error('The input character is not a number')
+            }
+
+            console.log(numero * numero);
+        }catch(error){
+            console.log(`the following error occurred ${error}`);
+        }
+    */
+        // 17) BREAK AND CONTINUE --> for control structure for, while, do while, switch
+    /*
+            const numeros = [1,2,3,4,5,6,7,8,9,0];
+            
+            for (let i = 0; i < numeros.length; i++){
+                if(i === 5){
+                    break; // break in the fifth iteration
+                }
+                console.log(numeros[i]);
+            }
+            for (let i = 0; i < numeros.length; i++){
+                if(i === 5){
+                    continue; // the sixth iteration is skipped
+                }
+                console.log(numeros[i]);
+            }
+    */
+            // 18) DESTRUCTURING
+    /*
+                let numeros = [1,2,3]
+
+                let uno = numeros[0]
+                 dos = numeros[1]
+                 tres = numeros[2]
+
+                console.log(uno, dos, tres); // 1,2,3
+
+            // WITH DESTRUCTURING
+                const [one, two, three] = numeros; // to each of array positions, im keeping in the variables one,two, three
+                console.log(one, two, three); // 1,2,3
+
+                const person = {
+                    name: 'Pepe',
+                    surname: ' Loco',
+                    age: 22
+                }
+
+                const {name, surname, age} = person
+
+                console.log(name, surname, age); //--> en la destructuracion de los obejtos se deben respetar los nombres de los attributos o variables
+                //--> in object destructuring name atributes must be respected
+
+    */
+                //19) Literal Objects --> new way to write and asign attributes and methods. Literal objects makes writing procces more easy, facilitates objects writing process. When the value of the atribute and the name are the same. 
+    /*
+                let name = 'Kenai';
+                let  age = 7;
+
+                const dog = {
+                    name: name,
+                    age: age,
+                    ladrar: function(){
+                        console.log('GUAU GUAUUU');
+                    }
+                }
+
+                console.log(dog);
+                dog.ladrar();
+
+                const perro = {
+                    name,
+                    age,
+                    breed: 'labrador',
+                    ladrar(){
+                        console.log('GUAU GUAUUUU GUAUUU');
+                    }
+                }
+
+                console.log(perro);
+                perro.ladrar();
+
+        */
+                //20) REST parameter and SPREAD OPERATOR
+        /*
+                // REST PARAMETERS
+                function sumar (a,b, ...c) {
+                    let resultado = a + b;
+
+                    c.forEach(function(n){
+                        resultado += n
+                    })
+                    return resultado; 
+                }
+
+                console.log(sumar(1,2));
+                console.log(sumar(1,2,3));
+                console.log(sumar(1,2,3,4));
+                console.log(sumar(1,2,3,4,5));
+                console.log(sumar(1,2,3,4,5,6));
+                console.log(sumar(1,2,3,4,5,6,7));
+
+                // SPREAD OPERATOR
+                const arr1 = [1,2,3,4,5],
+                arr2 = [6,7,8,9,0]
+
+                console.log(arr1, arr2);
+
+                const arr3 = [arr1,arr2];
+
+                console.log(arr3);
+
+                const array3 = [...arr1, ...arr2]
+
+                console.log(array3);
+        */
+                
+                //21) ARROW FUNCTION --> new way to define define anonimate function
+                //
+                // funcion expresada-->cuando  a una variable le asignas el valor de una funcion anonima /when assign the  value of an anonymous function to a variable
+                // const greet = function(){
+                //     console.log('Hello');
+                // }
+
+                // greet(); 
+
+                // Funcion declarada / declared function
+                // function greeting(){
+                //     console.log('Hi');
+                // }
+
+                // const greeting = () => console.log('Hola');
+                // greeting();
+
+                const greeting = nombre => console.log(`Hello ${nombre}`);
+                greeting('Irma');
+
+                // const increase = function(a,b){
+                //     return a + b;
+                // }
+
+                const increase = (a,b) => a + b; 
+                console.log(increase(10,8));
+                // when thw function have some lines, we need the brackts (llaves)
+                const functionOfSomeLines = () => {
+                    console.log('one');
+                    console.log('two');
+                    console.log('three');
+                }
+
+                functionOfSomeLines();
+
+                const numbers = [1,2,3,4,5];
+                
+                // numbers.forEach(function(el,index){
+                //     console.log(`the element ${el} is in ${index} position`);
+                // })
+                // when the function hace only one code line, we can omit  brackets
+                numbers.forEach((el,index) => console.log(`${el} is in ${index} position`))
+
+                // function Perro() {
+                //     console.log(this);
+                // }
+
+                // Perro();
+
+                // const perro = {
+                //     name : 'Kenai',
+                //     bark : function(){
+                //         console.log(this); // this es el objeto
+                //     }
+                // }
+
+                
+                const perro = { //--> arrow function tiene la capacidad capturar el contexto del objeto en el que se encuentran. Tener cuidado al usar arrow para declarar metodos dentro de objetos literales.
+                    name : 'Kenai',
+                    bark : () => {
+                        console.log(this); //--> this es el objeto window. Las arrow tiene la capacidad de saltar el contexto en donde estan y reconocer el contexto del objeto padre donde ha sido declarado. En este caso es window (ventana del navegador).Es decir, no es una buena practica declarar o crear un metodo dentro de un objeto a partir de una arrow function (problema del contexto this. )
+                    }
+                }
+                perro.bark();
+                
+                
+            
+
+
+
+
     </script>
 </body>
 </html>
