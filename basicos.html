@@ -401,7 +401,7 @@
 
                 console.log(array3);
         */
-                
+        /*
                 //21) ARROW FUNCTION --> new way to define define anonimate function
                 //
                 // funcion expresada-->cuando  a una variable le asignas el valor de una funcion anonima /when assign the  value of an anonymous function to a variable
@@ -466,7 +466,57 @@
                     }
                 }
                 perro.bark();
-                
+
+        */
+                // 22) PROTOTIPOS
+
+                // CONSTRUCTION FUNCTION
+
+                // function Animal (name, gender){
+                //     //Atributes
+                //     this.name = name;
+                //     this.gender = gender;
+                //     //methods
+                //     this.sonar = function(){
+                //         console.log('I make sound cause im alive');
+                //     }
+                //     this.greeting = function(){
+                //         console.log(`Hi, my name is ${this.name}`);
+                //     }
+                // }
+
+
+                // CONSTRUCTION FUNCTION where asign methods to the prototype, not to the function:
+                function Animal (name, gender){
+                //Atributes
+                this.name = name;
+                this.gender = gender;
+
+                }
+                //Methods added to the prototype of the construction function (avoiding duplicates):
+                Animal.prototype.sonar = function(){
+                    console.log('I make sound cause im alive'); 
+                }
+                Animal.prototype.greeting = function(){
+                    console.log(`Hi, my name is ${this.name}`);
+                }
+
+                const snoopy = new Animal('Snoopy', 'male')
+                const lolaBunny = new Animal('Lola Bunny', 'female');
+
+                snoopy.greeting();
+                lolaBunny.greeting();
+
+                let array = [1,2,3,4]
+                console.log(array); // _proto_: array
+
+                //METHODS: DIRECTLY ASSIGNES TO THE PROTOTYPE FOR BETTER PERFORMANCE AND DATA OPTIMIZATION, MEMORY. 
+
+                // Do all objects prototype? Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.
+
+                //What is the prototype of an object? The prototype of an object is referred to by the prototype property of the constructor function that creates and initializes the object. The isPrototypeOf() method provides a way to determine if one object is the prototype of another. This technique can be used to determine the class of an object.
+
+
                 
             
 
