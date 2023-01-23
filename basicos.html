@@ -501,10 +501,44 @@
                     console.log(`Hi, my name is ${this.name}`);
                 }
 
-                const snoopy = new Animal('Snoopy', 'male')
+                //PROTOTIPIC INHERTI
+                    //Dog will be sun of Animal
+                    function Dog (name, gender, size){
+                    this.super = Animal; // --> im declaring that the parent/ father element of Dog will be Animal.
+                    this.super(name, gender);
+                    this.size = size; 
+                }
+
+                //Perro sera una instancia de animal par ano repetir codigo:
+                //DOG IS INHERTING FROM Aniaml.
+                Dog.prototype = new Animal();
+                Dog.prototype.constructor = Dog; 
+
+                // Sobreescritura de metodos del Prototipo padre en el hijo / Overwiriting of father prototype methods in the sun.
+
+                Dog.prototype.sonar = function(){
+                    console.log('Im a dog and my sound is a bark')
+                }
+
+                //Creating a new method in class Dog (exclusive of Dog prototype)
+
+                Dog.prototype.ladrar = function(){
+                    console.log('Wau, wau');
+                }
+
+                
+                // const snoopy = new Animal('Snoopy', 'male')
+                const snoopy = new Dog('Snoopy', 'male', 'medium')
                 const lolaBunny = new Animal('Lola Bunny', 'female');
 
+                console.log(snoopy); // the snoopy prototype is Animal (inherti from animal)
+                console.log(lolaBunny); // the lolabunny prototype is Object
+
+                // snoopy.sonar();
                 snoopy.greeting();
+                snoopy.ladrar();
+
+                // lolaBunny.sonar();
                 lolaBunny.greeting();
 
                 let array = [1,2,3,4]
@@ -514,11 +548,10 @@
 
                 // Do all objects prototype? Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.
 
-                //What is the prototype of an object? The prototype of an object is referred to by the prototype property of the constructor function that creates and initializes the object. The isPrototypeOf() method provides a way to determine if one object is the prototype of another. This technique can be used to determine the class of an object.
+                //What is the prototype of an object? The prototype of an object is referred to by the prototype property of the constructor function that creates and initializes the object. The isPrototypeOf() method provides a way to determine if one object is the prototype of another. This technique can be used to determine the class of an object. 
 
-
-                
             
+
 
 
 
