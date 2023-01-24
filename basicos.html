@@ -401,23 +401,23 @@
 
                 console.log(array3);
         */
-        /*
+        /*  
                 //21) ARROW FUNCTION --> new way to define define anonimate function
-                //
-                // funcion expresada-->cuando  a una variable le asignas el valor de una funcion anonima /when assign the  value of an anonymous function to a variable
-                // const greet = function(){
-                //     console.log('Hello');
-                // }
+                
+                //Funcion expresada -->cuando  a una variable le asignas el valor de una funcion anonima /when assign the  value of an anonymous function to a variable
+                const greet = function(){
+                    console.log('Hello');
+                }
 
-                // greet(); 
+                greet(); 
 
-                // Funcion declarada / declared function
-                // function greeting(){
-                //     console.log('Hi');
-                // }
+                //Funcion declarada / declared function
+                function greeting(){
+                    console.log('Hi');
+                }
 
-                // const greeting = () => console.log('Hola');
-                // greeting();
+                const greeting = () => console.log('Hola');
+                greeting();
 
                 const greeting = nombre => console.log(`Hello ${nombre}`);
                 greeting('Irma');
@@ -439,9 +439,9 @@
 
                 const numbers = [1,2,3,4,5];
                 
-                // numbers.forEach(function(el,index){
-                //     console.log(`the element ${el} is in ${index} position`);
-                // })
+                numbers.forEach(function(el,index){
+                    console.log(`the element ${el} is in ${index} position`);
+                })
                 // when the function hace only one code line, we can omit  brackets
                 numbers.forEach((el,index) => console.log(`${el} is in ${index} position`))
 
@@ -468,8 +468,8 @@
                 perro.bark();
 
         */
-                // 22) PROTOTIPOS
-
+                // 22) PROTOTYPES
+        /*
                 // CONSTRUCTION FUNCTION
 
                 // function Animal (name, gender){
@@ -488,9 +488,9 @@
 
                 // CONSTRUCTION FUNCTION where asign methods to the prototype, not to the function:
                 function Animal (name, gender){
-                //Atributes
-                this.name = name;
-                this.gender = gender;
+                    //Atributes
+                    this.name = name;
+                    this.gender = gender;
 
                 }
                 //Methods added to the prototype of the construction function (avoiding duplicates):
@@ -501,12 +501,13 @@
                     console.log(`Hi, my name is ${this.name}`);
                 }
 
+               
                 //PROTOTIPIC INHERTI
                     //Dog will be sun of Animal
                     function Dog (name, gender, size){
-                    this.super = Animal; // --> im declaring that the parent/ father element of Dog will be Animal.
-                    this.super(name, gender);
-                    this.size = size; 
+                        this.super = Animal; // --> im declaring that the parent/ father element of Dog will be Animal.
+                        this.super(name, gender);
+                        this.size = size; 
                 }
 
                 //Perro sera una instancia de animal par ano repetir codigo:
@@ -526,7 +527,7 @@
                     console.log('Wau, wau');
                 }
 
-                
+        
                 // const snoopy = new Animal('Snoopy', 'male')
                 const snoopy = new Dog('Snoopy', 'male', 'medium')
                 const lolaBunny = new Animal('Lola Bunny', 'female');
@@ -543,15 +544,118 @@
 
                 let array = [1,2,3,4]
                 console.log(array); // _proto_: array
-
+        
                 //METHODS: DIRECTLY ASSIGNES TO THE PROTOTYPE FOR BETTER PERFORMANCE AND DATA OPTIMIZATION, MEMORY. 
 
                 // Do all objects prototype? Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.
 
                 //What is the prototype of an object? The prototype of an object is referred to by the prototype property of the constructor function that creates and initializes the object. The isPrototypeOf() method provides a way to determine if one object is the prototype of another. This technique can be used to determine the class of an object. 
 
-            
+                
+                //New construction function Avatar (sun of Animal ). Its PROTOTYPE will be Animal. Avatar will inherit the properties of his prototype father (Animal);
 
+                function Avatar (name, gender){
+                    this.super = Animal;
+                    this.super(name,gender);
+                }
+
+                Avatar.prototype =new Animal();
+                Avatar.prototype.constructor = Animal;
+
+                Avatar.prototype.greeting = function(){
+                    console.log(`Hi, my name is ${this.name}`);
+                }
+
+                Avatar.prototype.growl = function(){
+                    console.log('Rawrr! Im grunting cause im a Navi Avatar');
+                }
+
+                //Navi will inherit  Avatar properties , its own prototype father will vi Avatar.
+                function Navi (name, gender, age){
+                    this.super = Avatar;
+                    this.super(name, gender);
+                    this.age = age;
+                }
+
+                Navi.prototype = new Avatar();
+                Navi.prototype.constructor = Avatar;
+
+                const mike = new Navi ('Mike', 'Female',32)
+                const juampi = new Avatar('Juampi', 'Male', 29)
+                const fernando = new Animal('Fernando', 'Male', 45)
+                const napoleon = new Dog('Napoleon', 'male', 12)
+
+                console.log(mike);
+                console.log(juampi);
+                console.log(fernando);
+                console.log(napoleon);
+
+                mike.growl();
+                juampi.greeting();
+                fernando.sonar();
+                napoleon.ladrar();
+
+        */
+                
+            //CLASSES
+            class Animal {
+                // constructor its a especial method which/that is executed when a class is instantiated 
+                constructor(name, gender){
+                    this.name = name;
+                    this.gender = gender;
+
+                }
+                sonar(){
+                    console.log('I make sound cause im alive; im ' + this.name); 
+                }
+                greeting(){
+                    console.log(`Hi, my name is ${this.name}`);
+                }
+                growl(){
+                    console.log(`Rawrrrr, im grunting and my name is ${this.name}`);
+                }
+
+            }
+
+            const lala = new Animal('Augusto', 'female');
+            const candela = new Animal('Cadenla', 'female');
+
+            console.log(lala); // the prototype Animal its an object which enherti from the most primitive object in JS that is Object. The methods are/lies in its own prototype directly.
+            console.log(candela);
+
+            lala.sonar();
+            candela.greeting();
+
+            class Capybara extends Animal {
+                constructor(name, gender, temper){
+                // con el metodo super(), se manda a llamar el constructor de la clase padre
+                super(name, gender);
+                this.temper = temper; 
+                }
+                sonar(){
+                    console.log('I make sound cause im alive, but i dont bark');
+                }
+                greeting(){
+                    console.log(`Hi, im a capybara and i want to be your ${this.temper} pet`);
+                }
+            }
+
+            const sol = new Animal ('sol', 'female')
+            const lolo = new Capybara('Lolo', 'male', 'Friendly')
+            
+            console.log(sol);
+            sol.greeting();
+            console.log(lolo);
+            lolo.greeting();
+            lolo.growl(); //--> this method is inherit from its prototype Animal. Capybara class doenst have growl method.
+
+
+
+
+
+
+            
+                
 
 
 
