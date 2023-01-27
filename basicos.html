@@ -470,7 +470,7 @@
         */
                 // 22) PROTOTYPES
         /*
-                // CONSTRUCTION FUNCTION
+                // CONSTRUCTION FUNCTION / FUNCION CONSTRUCTORA
 
                 // function Animal (name, gender){
                 //     //Atributes
@@ -486,7 +486,7 @@
                 // }
 
 
-                // CONSTRUCTION FUNCTION where asign methods to the prototype, not to the function:
+                // CONSTRUCTION FUNCTION / FUNCION CONSTRUCTORA: where asign methods to the prototype, not to the function:
                 function Animal (name, gender){
                     //Atributes
                     this.name = name;
@@ -502,7 +502,7 @@
                 }
 
                
-                //PROTOTIPIC INHERTI
+                //PROTOTIPIC INHERTI / HERENCIA PROTOTIPICA
                     //Dog will be sun of Animal
                     function Dog (name, gender, size){
                         this.super = Animal; // --> im declaring that the parent/ father element of Dog will be Animal.
@@ -596,7 +596,7 @@
                 napoleon.ladrar();
 
         */
-                
+        /*       
             //CLASSES
             class Animal {
                 // constructor its a especial method which/that is executed when a class is instantiated 
@@ -635,10 +635,23 @@
                 sonar(){
                     console.log('I make sound cause im alive, but i dont bark');
                 }
+                //overwriting Animal method
                 greeting(){
-                    console.log(`Hi, im a capybara and i want to be your ${this.temper} pet`);
+                    console.log(`Hi, im a capybara, my name is ${this.name} and i want to be your ${this.temper} pet`);
                 }
+                growl(){
+                    console.log(`Rawrrrr, im grunting and my name is ${this.name}`);
+                }
+                static whatAreU(){ //puedo ejecutarlo sin la necesidad de haber creado un objeto( instanciar la clase) del tipo al que pertenece la clase. Es decir, sin instanciar a la clase Cabybara con new Capybara etc.
+                    console.log('The dogs are mammifers that belong to the canin family. We are considered humans best friend ');
+                }
+
             }
+
+        */
+        /*
+            //METODOS ESTATICOS /STATIC METHODS
+            Capybara.whatAreU();
 
             const sol = new Animal ('sol', 'female')
             const lolo = new Capybara('Lolo', 'male', 'Friendly')
@@ -649,17 +662,86 @@
             lolo.greeting();
             lolo.growl(); //--> this method is inherit from its prototype Animal. Capybara class doenst have growl method.
 
-
-
-
-
-
             
-                
+            class Dog extends Animal {
+                constructor(name, gender, temper){
+                // con el metodo super(), se manda a llamar el constructor de la clase padre
+                super(name, gender);
+                this.temper = temper; 
+                this.breed = null; 
+                }
+
+                sonar(){
+                    console.log('I make sound cause im alive, but i dont bark');
+                }
+                //overwriting Animal method
+                greeting(){
+                    console.log(`Hi, im a Dog, my name is ${this.name} and i want to be your ${this.temper} pet`);
+                }
+                growl(){
+                    console.log(`Rawrrrr, im grunting and my name is ${this.name}`);
+                }
+                static whatAreU(){ //puedo ejecutarlo sin la necesidad de haber creado un objeto( instanciar la clase) del tipo al que pertenece la clase. Es decir, sin instanciar a la clase Cabybara con new Capybara etc.
+                    console.log('The dogs are mammifers that belong to the canin family. We are considered humans best friend ');
+                }
+                // METODOS SETTERS AND GETTERS: allows us to establish and obtain class atributes values  / nos permiten establecer y obtener los valores de atributos de atributos de nuestra clase. Son metodos OBTENEDORES /(get) u OBTENEDORES (set) de los valores de atributos de la clase.
+                get getBreed(){ // GETTER METHOD / METODOS OBTENEDOR
+                    return this.breed;
+                }
+
+                set setBreed(breed){ // SETTER METHOD / METODO ESTABLECEDOR
+                    this.breed = breed;
+                }
+
+            }
 
 
+            const akiva = new Dog ( 'Akiva', 'female', 'friendly')
+            const bombon = new Dog ('Lala', 'female', 'chill')
 
+            console.log(akiva.getBreed);
+            akiva.setBreed = 'Siverian';
+            console.log(akiva.getBreed);
+            console.log(akiva);
+        */      
+            // CONSOLE OBJECT
+            console.log(console);
+            console.error('This is an error')
+            console.warn('This is an advise')
+            console.info('This is an informative mensage')
+            console.log('This is a record of what has happened in our application')
 
+            let name = 'Juampi',
+                surname = 'Boada',
+                age = '29';
+
+            console.log(name, surname, age);
+
+            console.clear(); // comment alternative
+            console.log(window);
+            console.log(document); // is the HTML representation throught JavaScript
+            console.dir(window);
+            console.dir(document);
+
+            console.clear();
+
+            console.group('Jon curses on YouTube'); // ways to representate or print console data. 
+            console.log('Javascrip curse');
+            console.log('Node.js curse');
+            console.log('PWEAs');
+            console.log('Flexbox');
+            console.log('Diseño y programacion web');
+            console.groupCollapsed('Jon curses on YouTube');
+            console.log('Javascrip curse');
+            console.log('Node.js curse');
+            console.log('PWEAs');
+            console.log('Flexbox');
+            console.log('Diseño y programacion web');
+
+            console.clear();
+
+            console.log(console);
+            console.table(Object.entries(console).sort())
     </script>
 </body>
-</html>
+</html>         
