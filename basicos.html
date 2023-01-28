@@ -469,7 +469,7 @@
 
         */
                 // 22) PROTOTYPES
-        /*
+        
                 // CONSTRUCTION FUNCTION / FUNCION CONSTRUCTORA
 
                 // function Animal (name, gender){
@@ -595,10 +595,10 @@
                 fernando.sonar();
                 napoleon.ladrar();
 
-        */
-        /*       
+        
+        
             //CLASSES
-            class Animal {
+            class Animal2 {
                 // constructor its a especial method which/that is executed when a class is instantiated 
                 constructor(name, gender){
                     this.name = name;
@@ -617,8 +617,8 @@
 
             }
 
-            const lala = new Animal('Augusto', 'female');
-            const candela = new Animal('Cadenla', 'female');
+            const lala = new Animal2('Augusto', 'female');
+            const candela = new Animal2('Cadenla', 'female');
 
             console.log(lala); // the prototype Animal its an object which enherti from the most primitive object in JS that is Object. The methods are/lies in its own prototype directly.
             console.log(candela);
@@ -626,7 +626,7 @@
             lala.sonar();
             candela.greeting();
 
-            class Capybara extends Animal {
+            class Capybara extends Animal2 {
                 constructor(name, gender, temper){
                 // con el metodo super(), se manda a llamar el constructor de la clase padre
                 super(name, gender);
@@ -648,12 +648,12 @@
 
             }
 
-        */
-        /*
+        
+        
             //METODOS ESTATICOS /STATIC METHODS
             Capybara.whatAreU();
 
-            const sol = new Animal ('sol', 'female')
+            const sol = new Animal2 ('sol', 'female')
             const lolo = new Capybara('Lolo', 'male', 'Friendly')
             
             console.log(sol);
@@ -663,7 +663,7 @@
             lolo.growl(); //--> this method is inherit from its prototype Animal. Capybara class doenst have growl method.
 
             
-            class Dog extends Animal {
+            class Dog2 extends Animal2 {
                 constructor(name, gender, temper){
                 // con el metodo super(), se manda a llamar el constructor de la clase padre
                 super(name, gender);
@@ -696,15 +696,17 @@
             }
 
 
-            const akiva = new Dog ( 'Akiva', 'female', 'friendly')
-            const bombon = new Dog ('Lala', 'female', 'chill')
+            const akiva = new Dog2 ( 'Akiva', 'female', 'friendly')
+            const bombon = new Dog2 ('Lala', 'female', 'chill')
 
             console.log(akiva.getBreed);
             akiva.setBreed = 'Siverian';
             console.log(akiva.getBreed);
             console.log(akiva);
-        */      
-            // CONSOLE OBJECT
+            console.clear();    
+
+
+            // CONSOLE OBJECT /METHODS
             console.log(console);
             console.error('This is an error')
             console.warn('This is an advise')
@@ -741,7 +743,87 @@
             console.clear();
 
             console.log(console);
-            console.table(Object.entries(console).sort())
+            console.table(Object.entries(console).sort());
+            const numbers = [1,2,3,4,5]
+            const vocals = ['a','e','i','o','u']
+            console.log(numbers);
+            console.table(numbers);
+            console.table(vocals);
+
+            console.table(akiva);
+
+            console.clear();
+
+            console.time('How long does my code take?')
+            const arreglo = Array(100);
+
+            for (let i = 0; i < arreglo.length; i++){
+                array[i] = i
+            }
+
+            console.timeEnd('How long does my code take?');
+            // console.log(arreglo);
+
+            console.clear();
+
+            for (let i = 0; i <=100; i++){
+                console.count('for code'); // to contorl o make a code revise/check.
+                console.log(i);
+            }
+
+            console.clear();
+
+            //PRUEBAS 
+
+            let x = 3;
+            let y = 2;
+            let pruebaXY = 'X is always expected to be smaller/less than Y'
+
+            console.assert(x < y, {x,y,pruebaXY}); 
+
+            //LIBRERIAS DE PRUEBAS UNITARIAS --> JAZMIN, MOCA INVESTIGAR 
+
+            console.clear();
+
+            // DATE OBJECT - METHODS / CONSTRUCTOR DATE
+
+            console.log(Date());
+
+            let fecha = new Date();
+            console.log(fecha); 
+
+            //day of the month:
+            console.log(fecha.getDate());
+            //day of the week M T W T F S -> 0 1 2 3 4 5 6
+            console.log(fecha.getDay());
+            //month of the year J F M A M J J A S O N D -> 0 1 2 3 4 5 6 7 8 9 10 11
+            console.log (fecha.getMonth());
+            console.log (fecha.getFullYear());
+            console.log(fecha.getHours());
+            console.log(fecha.getMinutes());
+            console.log(fecha.getSeconds());
+            console.log(fecha.getMilliseconds());
+            console.log(fecha.toString());
+            console.log(fecha.toDateString());
+            console.log(fecha.toLocaleString());
+            console.log(fecha.toLocaleDateString());
+            console.log(fecha.toLocaleTimeString());
+            console.log(fecha.getTimezoneOffset());
+            console.log(fecha.getUTCDate());
+            console.log(fecha.getUTCHours());
+
+            //EVERY METHOD HAS ITS OWN UTC - MERIDIAN ZERO (GREENWICH). WHERE IS THE SERVE? IT DOENS MATTER WHERE THE SERVER IS. depends on where the aplicattion is executed, where the aplicattion runs. And it always runs in the browser. Where is the USER? thats the question
+
+            console.log(Date.now()); //--> time stamp 
+
+            //MOMENT JS LIBRARY
+
+            let myBirthday = new Date(1993, 1, 16);
+
+            console.log(myBirthday);
+
+
+
     </script>
 </body>
 </html>         
