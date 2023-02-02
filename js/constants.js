@@ -9,6 +9,7 @@ const hello = () => console.log('Hi'); // funcion expresada (se guardan en varia
 
 
 export default function greeting(){ //--> function declarada.
+    // when an export default is imported, must be out of destructuration
      // only a single export default is possible. Only one export default function can be used
     console.log('Hi +ES6 modules');
 }
