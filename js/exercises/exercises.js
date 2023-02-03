@@ -68,7 +68,6 @@ const repeatText = (text = '', number = undefined) => {
 
     for (let i = 0; i < number; i++) console.info(`${text} ${i}`)
     
-
     // let repeatedText = '';
     // for(let i = 0; i < number; i++){
     //     repeatedText  += ` ${text}`;  
@@ -76,20 +75,48 @@ const repeatText = (text = '', number = undefined) => {
     // return repeatedText
 }
 
-repeatText('', 3);
-repeatText('Pepe')
-repeatText('pepe', 0);
-repeatText('pepe', -1);
-repeatText(3, 'JAJ');
-repeatText(3);
-repeatText('hello', 3)
+// repeatText('', 3);
+// repeatText('Pepe')
+// repeatText('pepe', 0);
+// repeatText('pepe', -1);
+// repeatText(3, 'JAJ');
+// repeatText(3);
+// repeatText('hello', 3)
 
 
 
-// (!text)
-// ? console.warn('No string was entered')
-// : (number === undefined)
-//     ? console.warn('No repetition number was entered')
-//     : {
-       
-//     }
+
+//5 a-) Programa una función que invierta las palabras de una cadena de texto, pe. miFuncion("Hola Mundo") devolverá "odnuM aloH".
+
+
+const stringInverted = (string= '') => {
+    if (!string) return console.warn('No string was entered');
+
+    if (!isNaN(string)) return console.warn('Number format is invalid');
+
+    let stringReversed = '';
+    for(let i = string.length -1 ; i >= 0; i--){
+        stringReversed += string[i];
+    }
+    return stringReversed;
+}
+
+//5 b-)
+
+const stringInverted2 = (string = '') =>
+    (!string) 
+        ? console.warn('No string was entered')
+        : console.info(string.split('').reverse().join(''));
+
+stringInverted2();
+stringInverted2('Hello');
+
+// console.log(stringInverted(2));
+
+//6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
+
+
+
+
+//7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+//8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
