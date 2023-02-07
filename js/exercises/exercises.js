@@ -12,7 +12,7 @@
 const characterCounting = (string = '') => 
     (!string) 
         ? console.warn('You dont entry any string') 
-        : console.info(`  The chain '${string}' has ${string.length} characters`);
+        : console.info(`  The string '${string}' has ${string.length} characters`);
 
 // characterCounting();
 // characterCounting('Hello World');
@@ -61,7 +61,7 @@ const repeatText = (text = '', number = undefined) => {
     
     if (number === 0) return console.error('Times number can not be 0');
     
-    if(Math.sign(number) === -1) return console.error('Times number can not be negative');
+    if (Math.sign(number) === -1) return console.error('Times number can not be negative');
 
     if (isNaN(number)) return console.error('Invalid number');
     
@@ -108,15 +108,255 @@ const stringInverted2 = (string = '') =>
         ? console.warn('No string was entered')
         : console.info(string.split('').reverse().join(''));
 
-stringInverted2();
-stringInverted2('Hello');
+// stringInverted2();
+// stringInverted2('Hello');
 
 // console.log(stringInverted(2));
 
+// ----indexOf() training----
+
+//0) 
+let tickets = [1,2,3,4,5,6,7,8,8,3,4]
+
+const validTicket = (id) => tickets.indexOf(id) != -1;
+
+let isValid = validTicket(4); //Ticket is valid
+
+(isValid) 
+    ? console.log('Ticket is valid') 
+    : console.log('Ticket is not valid');
+//1)
+let names1 = ['Juan', 'Jorge', 'Luis', 'Daniel']
+
+function isRegistered(name){
+    return names1.indexOf(name) != -1;
+}
+
+
+(isRegistered('Jorge'))
+    ? console.log('Name is registred')
+    : console.log('Name is not registred');
+
+//2)
+let names2 = ['Juan', 'Jorge',  'Luis', 'Daniel']
+
+function position(name){
+    return names2.indexOf(name);
+}
+
+// console.log(position('Luis')); //2
+
+//3)
+let names3 = ['Juan', 'Jorge', true, 'Luis', 'Daniel', true, ]
+
+function position2(name, begin){
+    return names3.indexOf(name, begin);
+}
+
+console.log(position2('Jorge', 3)); //-1
+
+//4)
+function Animal(name){
+    this.name = name;
+}
+let dog = new Animal('Lala')
+let cat = new Animal('Mila')
+let rabbit = new Animal ('Coco')
+let rabbit2 = new Animal('Toto')
+let bird = new Animal ('Pico')
+
+let animals = [dog, cat, rabbit, bird]
+
+function findAnimal(animal){
+    return animals.indexOf(animal)
+}
+// console.log(findAnimal(dog)); // index 
+
+function printAnimalName(index){
+    if (index === -1) return 'dont exist';
+    let animal = animals[index]
+    return `The animal name is ${animal.name}` 
+}
+
+// console.log(printAnimalName(findAnimal(rabbit)));
+
+
+function isTypePrimitive(param){
+    // return (typeof param === 'number' || typeof param === 'string' || typeof param === 'boolean')
+    return ['string', 'boolean', 'number'].indexOf(typeof param) != -1; 
+}
+
+console.log( 'is it primitive type? ' + isTypePrimitive([]));
+
+ /***************/console.clear()/***************/ 
+
+
+//5)
+const names0 = ['florin', 'Ivan', 'Liam']
+
+console.log(names0.indexOf('Ivan')); //1
+
+const idx = names0.indexOf('Ivan') 
+
+console.log(idx);
+
+if(idx > -1){
+    console.log('Yey, we have jay');
+}else{
+    console.log('Sad..');
+}
+
+
+ /***************/console.clear()/***************/ 
+
+
 //6) Programa una función para contar el número de veces que se repite una palabra en un texto largo, pe. miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
 
+const textOnString = (string = '', text = '') => {
 
+    if (!string) return console.warn('No string was entered');
+    if (!text) return console.warn('Evaluation text is not enter');
 
+    let i = 0,
+        counter = 0;
+    while(i !== -1){
+        i = string.indexOf(text, i);
+        if(i !== -1){
+            i++;
+            counter ++
+        }
+    }
+    return console.info(`text ${text} is repeted ${counter} times in --> ${string}`)
+}
+
+textOnString('My name is juampi, juampi, juampi', 'juampi');
+
+textOnString();
+textOnString('', 'mundo');
+textOnString('Hola bebe, bebe, bebe,bebe', 'bebe')
+
+/***************/console.clear()/***************/
 
 //7) Programa una función que valide si una palabra o frase dada, es un palíndromo (que se lee igual en un sentido que en otro), pe. mifuncion("Salas") devolverá true.
+
+// const polydrome = (word = '') => {
+//     if (!word) return console.warn('No word was entered');
+
+//     word = word.toLowerCase();
+
+//     let word2 = word.split('').reverse().join('');
+   
+//     if (word === word2){
+//         return `${word} is polydrome. Original: ${word} Flipped: ${word2}`
+//     }else{
+//         return `${word} is not polydrome. Original: ${word} Flipped: ${word2}`
+//     }
+
+// }
+
+ 
+
+const polydrome = (word = '') => {
+    if (!word) return console.warn('No word was entered');
+
+    word = word.toLowerCase();
+
+    let word2 = word.split('').reverse().join('');
+   
+   return (word === word2)
+        ? console.info(`${word} is polydrome. Original: ${word} Flipped: ${word2}`)
+        : console.info( `${word} is not polydrome. Original: ${word} Flipped: ${word2}`)
+    
+
+}
+
+// polydrome();
+// polydrome('salas');
+// polydrome('Hello');
+
+
+
 //8) Programa una función que elimine cierto patrón de caracteres de un texto dado, pe. miFuncion("xyz1, xyz2, xyz3, xyz4 y xyz5", "xyz") devolverá  "1, 2, 3, 4 y 5.
+
+const text = 'str1, str2, str3, str4, str5';
+
+const deletingPatron1 = (string = '', patron= '' ) => {
+   if (!string) return console.warn('No string has been entered')
+   if (!patron) return console.warn('No patron has been entered')
+    
+   let freePatronString = string.replaceAll(patron, '');
+    return freePatronString; 
+}
+
+// console.log(deletingPatron1(text,'str'));
+
+const deletingPatron = (string = '', patron= '' ) => 
+    (!string)
+        ? console.warn ('No string has been entered')
+        : (!patron)
+            ? console.warn('No patron has been entered')
+            : console.info(string.replace(new RegExp(patron,'ig'),''))
+
+// deletingPatron();
+// deletingPatron('hola manola')
+// deletingPatron('Hola strManuel, strcomo estas?', 'str')
+
+
+//9) Programa una función que obtenga un numero aleatorio entre 501 y 600.
+
+// const randomNumberBetwenen = ()  => console.info (Math.round(Math.random() * (600 - 501) + 501))
+const randomNumberBetwenen = ()  => console.info (Math.round(Math.random() * 100 + 500))
+
+// randomNumberBetwenen();
+
+//10) Programa una función que reciba un número y evalúe si es capicúa o no (que se lee igual en un sentido que en otro), pe. miFuncion(2002) devolverá true.
+
+const isItCapicua = (number = 0) => {
+    if (!number) return console.warn('Number is not entered')
+    if (typeof number !== 'number') return console.error(`The value  ${number} is NOT valid`)
+
+    number = number.toString()
+    let reversedNumber = number.split('').reverse().join('');
+    return (number === reversedNumber)
+        ? true
+        : false
+ 
+}
+
+// console.log(isItCapicua());
+// console.log(isItCapicua('dede'));
+// console.log(isItCapicua(921));
+// console.log(isItCapicua(101));
+// console.log(isItCapicua(19.22));
+// console.log(isItCapicua(191.191));
+
+
+//11) Programa una función que calcule el factorial de un número (El factorial de un entero positivo n, se define como el producto de todos los números enteros positivos desde 1 hasta n), pe. miFuncion(5) devolverá 120.
+
+const factorial = (number = undefined) => {
+    if(number === undefined) return console.warn('No number has been entered');
+
+    if(typeof number !== 'number') return console.error(`The value entered '${number}' is not valid`)
+
+    if(number === 0)  return console.error('Number can not be 0')
+    
+    if(Math.sign(number) === -1) return console.error('Number can not be negative')
+
+    let factorial = 1; 
+
+    for(let i = number; i > 0; i--){
+        factorial *=  i; 
+    }
+    return `${number} factorial is equal to ${factorial}`
+}
+
+console.log(factorial());
+console.log(factorial('tres'));
+console.log(factorial(0));
+console.log(factorial(-1));
+console.log(factorial(4));
+// return + console will return an undefined 
+
+//12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+//13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
+//14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
