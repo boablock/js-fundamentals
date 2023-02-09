@@ -350,13 +350,138 @@ const factorial = (number = undefined) => {
     return `${number} factorial is equal to ${factorial}`
 }
 
-console.log(factorial());
-console.log(factorial('tres'));
-console.log(factorial(0));
-console.log(factorial(-1));
-console.log(factorial(4));
+// console.log(factorial());
+// console.log(factorial('tres'));
+// console.log(factorial(0));
+// console.log(factorial(-1));
+// console.log(factorial(4));
 // return + console will return an undefined 
 
 //12) Programa una función que determine si un número es primo (aquel que solo es divisible por sí mismo y 1) o no, pe. miFuncion(7) devolverá true.
+
+   
+const isPrime = (number = undefined) => {
+    if(number === undefined) return console.warn('No number has been entered');
+
+    if(typeof number !== 'number') return console.error(`The value entered '${number}' is not valid`)
+
+    if(Math.sign(number) === -1) return console.error('Number can not be negative')
+
+	// special cases
+	if (number == 0 || number == 1 || number == 4) return false;
+	for (let i = 2; i < number / 2; i++) {
+		if (number % i == 0) return false;
+	}
+	// if it can not be divided for any of the above, is prime
+	return true;
+
+}
+
+// console.log(isPrime());
+// console.log(isPrime('dod'));
+// console.log(isPrime(-1));
+// console.log(isPrime(7));
+
+const isPrime2 = (number = undefined) => {
+    if(number === undefined) return console.warn('No number has been entered');
+
+    if(typeof number !== 'number') return console.error(`The value entered '${number}' is not valid`)
+
+    if(number === 0)  return console.error('Number can not be 0')
+
+    if(number === 1)  return console.error('Number can not be 1')
+
+    if(Math.sign(number) === -1) return console.error('Number can not be negative')
+    let divisible = false;
+    for (let i = 2; i < number ; i++){
+        if((number % i) === 0){
+            divisible = true;
+            break; 
+    }
+}
+return (divisible)
+    ? console.log(`Number ${number} is not prime`)
+    : console.log(`Number ${number} is prime`)
+
+}
+
+// isPrime2()
+// isPrime2('dos')
+// isPrime2(true)
+// isPrime2(0);
+// isPrime2(1)
+// isPrime2(-13)
+// isPrime2(13)
+// isPrime2(200)
+
 //13) Programa una función que determine si un número es par o impar, pe. miFuncion(29) devolverá Impar.
-//14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F.
+
+const isPair = (number) => {
+    if(number === undefined) return console.warn('No number has been entered');
+
+    if(typeof number !== 'number') return console.error(`The value entered '${number}' is not valid`)
+
+    if(Math.sign(number) === -1) return console.error('Number can not be negative')
+
+
+    return((number % 2) === 0)
+        ? `The number ${number} is pair`
+        : `The numner ${number} is not pair`
+
+}
+
+// console.log(isPair());
+// console.log(isPair('232'))
+// console.log(isPair(-1))
+// console.log(isPair(10));
+// console.log(isPair(11));
+
+//14) Programa una función para convertir grados Celsius a Fahrenheit y viceversa, pe. miFuncion(0,"C") devolverá 32°F. The validation order is important its correct functioning
+
+const degreeConverter = (grades = undefined, scale = undefined) => {
+
+    if(grades === undefined) return console.warn('No grades has been entered'); //-> this grade validation must be first
+    
+    if(typeof grades !== 'number') return console.error(`The value entered '${grades}' is not valid`) 
+
+    if (scale === undefined) return console.warn('No scale has been entered')
+
+    if(typeof scale !== 'string') return console.error(`Scale must be a number, scale entered '${scale}' is not a number`)
+
+
+    if(scale.length !== 1 || !/(C|F)/.test(scale)) return console.warn(`"${scale}": Unrecognized scale value`)
+
+    // let result = 0;
+    // if (scale === 'C'){
+    //      result = ((grades * 1.8) + 32).toFixed(2) + 'F'
+    // }else if (scale === 'F'){
+    //     result = ((grades - 32) / 1.8).toFixed(2) + 'C'
+    // }
+    // return result; 
+    if(scale === 'C'){
+        return `${grades}°C= ${Math.round(grades * (9/5)) +32}F`
+    }else if(scale ==='F'){
+        return `${grades}°F = ${Math.round((grades-32)*(5/9))}°C`
+    }
+        
+}   
+
+console.log(degreeConverter());
+
+console.log(degreeConverter('dos'));
+
+console.log(degreeConverter(21));
+
+console.log(degreeConverter(2,true));
+
+console.log(degreeConverter('cero'));
+
+console.log(degreeConverter(21, 'CC'));
+
+console.log(degreeConverter(21, 'd'));
+
+console.log(degreeConverter(10, 'F'));
+
+//15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+//16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+//17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
