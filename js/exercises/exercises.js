@@ -448,7 +448,6 @@ const degreeConverter = (grades = undefined, scale = undefined) => {
 
     if(typeof scale !== 'string') return console.error(`Scale must be a number, scale entered '${scale}' is not a number`)
 
-
     if(scale.length !== 1 || !/(C|F)/.test(scale)) return console.warn(`"${scale}": Unrecognized scale value`)
 
     // let result = 0;
@@ -466,22 +465,49 @@ const degreeConverter = (grades = undefined, scale = undefined) => {
         
 }   
 
-console.log(degreeConverter());
+// console.log(degreeConverter());
 
-console.log(degreeConverter('dos'));
+// console.log(degreeConverter('dos'));
 
-console.log(degreeConverter(21));
+// console.log(degreeConverter(21));
 
-console.log(degreeConverter(2,true));
+// console.log(degreeConverter(2,true));
 
-console.log(degreeConverter('cero'));
+// console.log(degreeConverter('cero'));
 
-console.log(degreeConverter(21, 'CC'));
+// console.log(degreeConverter(21, 'CC'));
 
-console.log(degreeConverter(21, 'd'));
+// console.log(degreeConverter(21, 'd'));
 
-console.log(degreeConverter(10, 'F'));
+// console.log(degreeConverter(10, 'F'));
 
 //15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10.
+
 //16) Programa una función que devuelva el monto final después de aplicar un descuento a una cantidad dada, pe. miFuncion(1000, 20) devolverá 800.
+const discount = (amount = undefined, discount = undefined) => {
+    if(amount === undefined) return console.warn('No amount has been entered'); //-> this grade validation must be first
+    
+    if(typeof amount !== 'number') return console.error(`The value entered '${amount}' is not valid`) 
+
+    if(Math.sign(amount) === -1) return console.error('Amount can not be negative')
+
+    if (discount === undefined) return console.warn('No dicount has been entered')
+
+    if(typeof discount !== 'number') return console.error(`Discount must be a number, discount entered '${discount}' is not a number`)
+
+    if(Math.sign(discount) === -1) return console.error('Discount can not be negative')
+
+    let  discountValue = discount / 100
+    let newPrice = amount - (amount * discountValue)
+    return (newPrice);
+
+}
+discount();
+discount(20);
+discount(20);
+discount('cien', 10)
+discount(100, 'ochenta');
+console.log(discount(1000, 20));
+console.log(discount(500, 20));
 //17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020).
+
